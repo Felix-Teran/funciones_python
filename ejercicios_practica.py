@@ -19,18 +19,48 @@ import random
 
 
 def imprimir_nombre(nombre, apellido):
-    pass
+    """Imprime nombre completo"""
+    print("Nombre: {} {} \n".format(nombre, apellido))
     # En este lugar debe colocar el "print" e imprimir
     # en pantalla el nombre y apellido que vienen por parámetro
     # print(.....)
 
 
 def promedio(numeros):
+    """Esta función calcula el promedio de una lista, en caso
+       de no poseer ningún elemento, arroja una alarma al user"""
     # Alumno:
     # 1) calcule el promedio
-    # 2) use "return" para retornar ese valor
-    pass  # Cuando termine de implementar está función borrar "pass"
+    if len(numeros) == 0:
+        print("\33[93mLa lista se encuentra vacía, no posee elementos\33[0m")
+    elif len(numeros) > 0:
+        numeros_cantidad = len(numeros)
+        numeros_sumatoria = sum(numeros)
+        promedio = numeros_sumatoria / numeros_cantidad
 
+    # 2) use "return" para retornar ese valor
+        return promedio
+    # Cuando termine de implementar está función borrar "pass"
+
+
+def ordenar(numeros):
+    if len(numeros) == 0:
+        print("La lista se encuentra vacía, no posee elementos")
+    elif len(numeros) > 0:
+        numeros.sort(reverse=True)
+        return numeros
+
+
+def lista_aleatoria(inicio, fin, cantidad):
+    lista = []
+    for i in range(cantidad):
+        numero = random.randrange(inicio, fin+1)
+        lista.append(numero)
+    return lista
+
+def contar(random_list, num):
+        count_num = random_list.count(num)
+        return count_num
 
 def ej1():
     print('Mi primera funcion')
@@ -39,7 +69,7 @@ def ej1():
     # Esa función ya se encuentra a medio armar al principio de este archivo.
     # Debe cumpletar la función para que se imprima en pantalla su nombre y apellido
     # Debe invocar a la función como:
-    imprimir_nombre('mi_nombre', 'mi_apellido')
+    imprimir_nombre("Félix", "Teran")
 
     # Reemplazar por su nombre y apellido los textos
 
@@ -78,14 +108,17 @@ def ej2():
 
     # Llamar a la función en este lugar y capturar el valor del retorno
     # promedio_re
+    promedio_re = promedio(numeros)
 
     # Luego imprimir en pantalla el valor resultante, tal que:
-
+    
+    print(numeros, "\n"
+          "El promedio de la lista es:", promedio_re, "\n")
 
 def ej3():
     # Ejercicios de listas y métodos
     numeros = [2, 4, 6, 8, 10, 12]
-
+    print("Lista original:", numeros)
     '''
     Generar una una nueva funcion que se llame "ordenar",
     que utilizaremos para odernar la lista de numeros.
@@ -98,10 +131,11 @@ def ej3():
     '''
 
     # Luego de crear la función invocarla en este lugar:
-    # lista_ordenada = ordenar(numeros)
+    lista_ordenada = ordenar(numeros)
     # Imprimir en pantalla "lista_ordenada" que tendrá
     # los valores retornado por la función ordenar
-
+    print("La lista ordenada de forma decreciente es:\n",
+          lista_ordenada, "\n")
 
 def ej4():
     # Ejercicios con modulos del sistema
@@ -137,14 +171,26 @@ def ej4():
     '''
 
     # Invocar lista_aleatoria
-    # mi_lista_aleatorio = lista_aleatoria(inicio, fin, cantidad)
+    mi_lista_aleatorio = lista_aleatoria(inicio, fin, cantidad)
     # print(mi_lista_aleatorio)
+    print("La lista aleatoria creada es:\n",
+          mi_lista_aleatorio, "\n")
 
 
 def ej5():
     # Ejercicios de listas y métodos
     cantidad_numeros = 5
+    inicio = 1
+    fin = 9
+    random_list = lista_aleatoria(inicio, fin, cantidad_numeros)
+    print("La lista creada aleatoriamente es la siguiente:\n", random_list)
 
+    num = int(input("Ingrese un número para conocer cuántas veces se repite en la lista:\n"))
+    repeat_num = contar(random_list, num)
+    print("El número {} se repite x{} ".format(num, repeat_num))
+
+
+    
     '''
     Utilice la función "lista_aleatoria" para generar
     una lista de 5 números en un rango de 1 a 9 inclusive
@@ -167,7 +213,7 @@ def ej5():
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     ej1()
-    # ej2()
-    # ej3()
-    # ej4()
-    # ej5()
+    ej2()
+    ej3()
+    ej4()
+    ej5()
