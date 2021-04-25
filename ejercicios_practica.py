@@ -31,9 +31,22 @@ def promedio(numeros):
        de no poseer ningún elemento, arroja una alarma al user"""
     # Alumno:
     # 1) calcule el promedio
+    
     if len(numeros) == 0:
         print("\33[93mLa lista se encuentra vacía, no posee elementos\33[0m")
+        numeros = []
+        new_list = int(input("Ingrese un número y crearemos una lista aleatoaria\n"))
+        for i in range(new_list):
+            new_elements = random.randrange(new_list)
+            numeros.append(new_elements)
+        print("La nueva lista es:", numeros)
+        numeros_cantidad = len(numeros)
+        numeros_sumatoria = sum(numeros)
+        promedio = numeros_sumatoria / numeros_cantidad
+        return promedio
+
     elif len(numeros) > 0:
+        print("La lista es:", numeros)
         numeros_cantidad = len(numeros)
         numeros_sumatoria = sum(numeros)
         promedio = numeros_sumatoria / numeros_cantidad
@@ -45,7 +58,16 @@ def promedio(numeros):
 
 def ordenar(numeros):
     if len(numeros) == 0:
-        print("La lista se encuentra vacía, no posee elementos")
+        print("\33[93mLa lista se encuentra vacía, no posee elementos\33[0m")
+        numeros = []
+        new_list = int(input("Ingrese un número y crearemos una lista aleatoaria\n"))
+        for i in range(new_list):
+            new_elements = random.randrange(new_list)
+            numeros.append(new_elements)
+        print("La nueva lista es:", numeros)
+        numeros.sort(reverse=True)
+        return numeros
+
     elif len(numeros) > 0:
         numeros.sort(reverse=True)
         return numeros
@@ -108,12 +130,12 @@ def ej2():
 
     # Llamar a la función en este lugar y capturar el valor del retorno
     # promedio_re
+
     promedio_re = promedio(numeros)
 
     # Luego imprimir en pantalla el valor resultante, tal que:
     
-    print(numeros, "\n"
-          "El promedio de la lista es:", promedio_re, "\n")
+    print("El promedio de la lista es: {0:.2f}\n".format(promedio_re))
 
 def ej3():
     # Ejercicios de listas y métodos
