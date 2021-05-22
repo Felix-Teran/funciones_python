@@ -15,6 +15,7 @@ __author__ = "Inove Coding School"
 __email__ = "alumnos@inove.com.ar"
 __version__ = "1.3"
 
+import modulos_profund
 
 def ej1():
     print('Comencemos a crear lo nuestro!')
@@ -37,10 +38,16 @@ def ej1():
 def ej2():
     print("Jugando a los dados")
 
+    inicio = 1
+    fin = 6
+    cantidad = 5
+
+    dado_list = modulos_profund.lista_aleatoria(inicio, fin, cantidad)
+    print("Resultados de lanzamientos:", dado_list)
     '''
     Un dado común tiene 6 caras, 6 resultados posibles
     1 - 2 - 3 - 4 - 5 - 6
-
+    
     Utilice la función "lista_aleatoria" para generar
     5 tiros de dados (una lista de 5 valores con resultados posibles
     de un dado)
@@ -54,7 +61,8 @@ def ej2():
     de números generados.
     Imprimir en pantalla la lista ordenada
     '''
-
+    dado_orden = modulos_profund.ordenar(dado_list)
+    print("Lanzamientos ordenados:" , dado_orden)
 
 def ej3():
     print("Jugando a los dados")
@@ -87,6 +95,15 @@ def ej3():
     vistos en clase para ver como se implementa max con esa key
 
     '''
+    inicio = 1
+    fin = 6
+    cantidad = 5
+
+    dado_list = modulos_profund.lista_aleatoria(inicio, fin, cantidad)
+    print(dado_list)
+    
+    num = [1, 2, 3, 4, 5, 6]
+    repetidos = modulos_profund.contar(dado_list, num)
 
 
 def ej4():
@@ -150,5 +167,5 @@ if __name__ == '__main__':
     print("Ejercicios de práctica")
     # ej1()
     # ej2()
-    # ej3()
+    ej3()
     # ej4()
