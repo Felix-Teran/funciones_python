@@ -16,6 +16,7 @@ __email__ = "alumnos@inove.com.ar"
 __version__ = "1.3"
 
 import modulos_profund
+import random
 
 def ej1():
     print('Comencemos a crear lo nuestro!')
@@ -96,15 +97,16 @@ def ej3():
 
     '''
     inicio = 1
-    fin = 6
-    cantidad = 5
+    fin = 5
 
-    dado_list = modulos_profund.lista_aleatoria(inicio, fin, cantidad)
+    dado_list = [random.randrange(1,7) for x in range(inicio, fin+1)]
     print(dado_list)
     
     num = [1, 2, 3, 4, 5, 6]
     repetidos = modulos_profund.contar(dado_list, num)
 
+    dado_list_max = max(dado_list, key=dado_list.count)
+    print('\033[1m'f"El número {dado_list_max} fue el que más se repitió"'\033[0m')
 
 def ej4():
     print("Ahora sí! buena suerte :)")
@@ -122,7 +124,7 @@ def ej4():
     sacados en esa tirada de de dados (son 5 números del 1 al 6)
 
     1) El jugador tira la dados y sacar 5 números aleatorios, puede usar
-    la función de "lista_aleatoria" para generar dichos números.
+    la función de "lista_aleatoria" para generard dichos números.
 
     2) Luego debe analizar los 5 números y ver cual es el número que
     más se repitio entre los 5 dados.
@@ -161,11 +163,27 @@ def ej4():
     guardados" tenga "generala", es decir, 5 números iguales.
 
     '''
+    inicio = 1
+    fin = 5
+    repetidos = []
+    dado_list = [random.randrange(1,7) for x in range(inicio, fin+1)]
+    dado_list_max = max(dado_list, key=dado_list.count)
+    print(f"Tus primeros lanzamientos fueron {dado_list} \n"
+          f"Y el valor para la generala será {dado_list_max}")
+    while len(repetidos) < 5:
+        dados_guardados = modulos_profund.examinar(dado_list, dado_list_max, repetidos)
+        repetidos = repetidos + dados_guardados
+        print("Tienes:", repetidos)
+        if len(repetidos) < 5:
+            dado_list = [random.randrange(1,7) for x in range(inicio, fin+1)]
+            print("Tu nuevo lanzamiento es:", dado_list)
+        continue
+    print("FELICIDADES, HICISTE GENERALA")
 
 
 if __name__ == '__main__':
     print("Ejercicios de práctica")
     # ej1()
     # ej2()
-    ej3()
-    # ej4()
+    # ej3()
+    ej4()

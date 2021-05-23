@@ -56,17 +56,20 @@ def ordenar(numeros):
         numeros.sort(reverse=True)
         return numeros
 
-
-def lista_aleatoria(inicio, fin, cantidad):
-    lista = []
-    for i in range(cantidad):
-        numero = random.randrange(inicio, fin+1)
-        lista.append(numero)
-    return lista
-
 def contar(dado_list, num):
     for i in num:
         if i not in dado_list:
             print(f"El número {i} no aparece en su lista de dados tirados")
         elif i in dado_list:
             print(f"El número {i} aparece x{dado_list.count(i)} en su lista de dados tirados") 
+
+def examinar(dado_list, dado_list_max, repetidos):
+    dados_guardados = []
+    for dado in dado_list:
+        if dado == dado_list_max:
+            dados_guardados.append(dado)
+            generala = len(repetidos) + len(dados_guardados)
+            if generala == 5:
+                break
+    return dados_guardados
+
